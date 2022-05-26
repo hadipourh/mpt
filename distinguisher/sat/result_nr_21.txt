@@ -1,0 +1,5 @@
+Results of applying monomial prediction method on 21 rounds of WARP
+####################################################################################################
+Fixed input positions: [24, 25, 26, 27]
+Key-independent output positions: [22]
+Number of key-independent bits: 1

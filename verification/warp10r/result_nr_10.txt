@@ -1,0 +1,6 @@
+Results of applying monomial prediction method on 10 rounds of WARP
+int NUMBER_OF_ROUNDS = 10;
+int na = 1;
+int nb = 64;
+int active_nibbles[1] = {15};
+int balanced_positions[64] = {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 48, 49, 50, 51, 60, 61, 62, 63, 64, 65, 66, 67, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 100, 101, 102, 103, 108, 109, 110, 111, 116, 117, 118, 119, 124, 125, 126, 127};

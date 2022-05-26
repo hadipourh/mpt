@@ -1,0 +1,19 @@
+xeon192g0
+Tue 01 Feb 2022 02:30:12 PM CET
+Looking for a distinguisher with 6 active nibbles ...
+Number of cube searches per thread: 2^(13.66)
+Looking for a distinguisher with 7 active nibbles ...
+Number of cube searches per thread: 2^(15.55)
+Looking for a distinguisher with 8 active nibbles ...
+Number of cube searches per thread: 2^(17.20)
+Integral distinguisher found in thread ForkPoolWorker-245
+Total time to find an integral distinguisher: 21947.07 seconds
+Looking for the best integral distinguisher with 8 active nibbles ...
+Total time to find the best integral distinguisher: 403466.36 seconds
+Sun 06 Feb 2022 12:40:27 PM CET
+
+int NUMBER_OF_ROUNDS = 15;
+int na = 8;
+int nb = 20;
+int active_nibbles[8] = {1, 2, 3, 7, 28, 29, 30, 31};
+int balanced_positions[20] = {52, 53, 54, 55, 60, 61, 62, 63, 68, 69, 70, 71, 100, 101, 102, 103, 124, 125, 126, 127};

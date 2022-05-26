@@ -1,0 +1,14 @@
+Sun 30 Jan 2022 04:34:21 PM CET
+Looking for a distinguisher with 3 active nibbles ...
+Looking for a distinguisher with 4 active nibbles ...
+Looking for a distinguisher with 5 active nibbles ...
+Integral distinguisher found :-)
+Total time to find an intergal distinguisher: 6144.04
+
+
+Results of applying monomial prediction method on 14 rounds of WARP
+int NUMBER_OF_ROUNDS = 14;
+int na = 5;
+int nb = 20;
+int active_nibbles[5] = {6, 7, 8, 9, 29};
+int balanced_positions[20] = {52, 53, 54, 55, 60, 61, 62, 63, 68, 69, 70, 71, 100, 101, 102, 103, 124, 125, 126, 127};
