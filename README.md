@@ -51,7 +51,7 @@ For example, to find integral distinguishers for 21 rounds of WARP, you can run 
 python3 satmp.py -nr 21 -sl minisat22
 ```
 
-In addition, to find an integral distinguisher corresponding to a given cube, you can use [checkcube.py](distinguisher/sat/checkcube.py). For example, let input nibbles `24, 25, 26, 27` be active, and the remaining nibbles take an arbitrary fixed value. To see if this cube results in an integral distinguisher after 21 rounds of WARP, run the following command:
+In addition, to find an integral distinguisher corresponding to a given cube, you can use [checkcube.py](distinguisher/sat/checkcube.py). For example, let input nibbles `[24, 25, 26, 27]` be fixed, and the remaining 12 nibbles take all possible values. To see if this cube results in an integral distinguisher after 21 rounds of WARP, run the following command:
 
 ```sh
 python3 checkcube.py -nr 21 -fi 24 25 26 27 -sl cadical
