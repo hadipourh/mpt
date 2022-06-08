@@ -1,6 +1,6 @@
 # Integral Analysis Based on Monomial Prediction
 
-This repository includes the source code of tools we used in our paper entitled [*Integral Analysis of WARP Based on Monomial Prediction*](), which was accepted in [FSE 2023](https://fse.iacr.org/2023/) [(ToSC-2022-2)](https://tosc.iacr.org/index.php/ToSC/issue/archive).
+This repository includes the source code of tools we used in our paper entitled [*Integral Analysis of WARP Based on Monomial Prediction*](https://eprint.iacr.org/2022/729), which was accepted in [FSE 2023](https://fse.iacr.org/2023/) [(ToSC-2022-2)](https://tosc.iacr.org/index.php/ToSC/issue/archive).
 
 ![logo](./miscellaneous/logo.svg)
 
