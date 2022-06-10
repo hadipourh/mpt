@@ -150,13 +150,13 @@ If you use our codes in a project resulting in an academic publication, please a
          title={Integral Analysis of WARP Based on Monomial Prediction}, 
          volume={2022}, 
          url={https://tosc.iacr.org/index.php/ToSC/article/view/?}, 
-         DOI={?}, 
+         DOI={10.46586/tosc.v2022.i2.92-112}, 
          number={2}, 
          journal={IACR Transactions on Symmetric Cryptology}, 
          author={Hadipour, Hosein and Eichlseder, Maria}, 
          year={2022}, 
-         month={?.}, 
-         pages={?}
+         month={10}, 
+         pages={92--112}
 }
 ```
 
