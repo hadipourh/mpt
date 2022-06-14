@@ -149,7 +149,7 @@ If you use our codes in a project resulting in an academic publication, please a
 @article{Hadipour_Eichlseder_2022,
          title={Integral Analysis of WARP Based on Monomial Prediction}, 
          volume={2022}, 
-         url={https://tosc.iacr.org/index.php/ToSC/article/view/?}, 
+         url={https://tosc.iacr.org/index.php/ToSC/article/view/9715}, 
          DOI={10.46586/tosc.v2022.i2.92-112}, 
          number={2}, 
          journal={IACR Transactions on Symmetric Cryptology}, 
