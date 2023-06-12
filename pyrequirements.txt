@@ -1,3 +1,2 @@
 gurobipy
 minizinc
-python-sat[pblib,aiger]
