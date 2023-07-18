@@ -45,11 +45,11 @@ x_r_0                       k_r  x_r_1  ...
 
 class Warp:
     count = 0
-    def __init__(self, nrounds=10, solver_name="cadical"):
+    def __init__(self, nrounds=10, solver_name=solvers.SolverNames.cadical153):
         Warp.count += 1
         self.nrounds = nrounds
         self.sat_solver_name = solver_name
-        self.supported_sat_solvers = list(solvers.SolverNames.cadical) + \
+        self.supported_sat_solvers = list(solvers.SolverNames.cadical153) + \
              list(solvers.SolverNames.glucose4) + \
                  list(solvers.SolverNames.glucose3) + \
                      list(solvers.SolverNames.lingeling) + \
@@ -60,7 +60,7 @@ class Warp:
                                      list(solvers.SolverNames.minisat22) + \
                                          list(solvers.SolverNames.minisatgh)
         assert(self.sat_solver_name in self.supported_sat_solvers)
-        if self.sat_solver_name in solvers.SolverNames.cadical:
+        if self.sat_solver_name in solvers.SolverNames.cadical153:
             self.sat_solver = solvers.Cadical()
         elif self.sat_solver_name in solvers.SolverNames.glucose4:
             self.sat_solver = solvers.Glucose4()
@@ -82,7 +82,7 @@ class Warp:
             self.sat_solver = solvers.MinisatGH()
 
         self.cnf_formula = formula.CNF()
-        self.solver = self.solver = solvers.Solver(name=self.sat_solver_name)
+        self.solver = solvers.Solver(name=self.sat_solver_name)
         self.variables_dictionary = dict()
         self.top_variable_identifier_so_far = 0
         self.cnf_file_name = f"warp_nr_{self.nrounds}.cnf"
