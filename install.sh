@@ -1,6 +1,3 @@
-#!/bin/bash
-set -eu
-
 pwd; hostname; date
 
 echo "installing minizinc ..."
@@ -26,8 +23,9 @@ fi
 ln -s "$minizinc_path_full/bin/minizinc" /usr/local/bin/minizinc
 
 # Install Python requirements
-python3 -m pip install -r pyrequirements.txt
+python3 -m pip install --break-system-packages -r pyrequirements.txt
 
 date
 echo "installation was completed!"
 exit 0
+
