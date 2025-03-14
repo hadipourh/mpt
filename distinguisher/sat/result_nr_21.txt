@@ -1,5 +1,65 @@
 Results of applying monomial prediction method on 21 rounds of WARP
 ####################################################################################################
-Fixed input positions: [24, 25, 26, 27]
+Fixed input positions: [0]
+Key-independent output positions: [6, 14, 20, 21, 22, 23, 30, 54, 60, 61, 62, 63, 76, 77, 78, 79, 84, 85, 86, 87, 110, 118, 124, 125, 126, 127]
+Number of key-independent bits: 26
+####################################################################################################
+Fixed input positions: [1]
+Key-independent output positions: [6, 14, 20, 21, 22, 23, 30, 54, 60, 61, 62, 63, 76, 77, 78, 79, 84, 85, 86, 87, 110, 118, 124, 125, 126, 127]
+Number of key-independent bits: 26
+####################################################################################################
+Fixed input positions: [2]
+Key-independent output positions: [6, 10, 12, 13, 14, 15, 20, 21, 22, 23, 30, 36, 37, 38, 39, 46, 54, 60, 61, 62, 63, 64, 65, 66, 67, 70, 76, 77, 78, 79, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 100, 101, 102, 103, 108, 109, 110, 111, 116, 117, 118, 119, 124, 125, 126, 127]
+Number of key-independent bits: 58
+####################################################################################################
+Fixed input positions: [3]
+Key-independent output positions: [6, 14, 20, 21, 22, 23, 30, 54, 60, 61, 62, 63, 76, 77, 78, 79, 84, 85, 86, 87, 110, 118, 124, 125, 126, 127]
+Number of key-independent bits: 26
+####################################################################################################
+Fixed input positions: [4]
 Key-independent output positions: [22]
 Number of key-independent bits: 1
+####################################################################################################
+Fixed input positions: [5]
+Key-independent output positions: [22]
+Number of key-independent bits: 1
+####################################################################################################
+Fixed input positions: [6]
+Key-independent output positions: [22, 126]
+Number of key-independent bits: 2
+####################################################################################################
+Fixed input positions: [7]
+Key-independent output positions: [22]
+Number of key-independent bits: 1
+####################################################################################################
+Fixed input positions: [8]
+Key-independent output positions: [20, 21, 22, 23, 46, 54, 62, 70, 76, 77, 78, 79, 84, 85, 86, 87, 94, 124, 125, 126, 127]
+Number of key-independent bits: 21
+####################################################################################################
+Fixed input positions: [9]
+Key-independent output positions: [20, 21, 22, 23, 46, 54, 62, 70, 76, 77, 78, 79, 84, 85, 86, 87, 94, 124, 125, 126, 127]
+Number of key-independent bits: 21
+####################################################################################################
+Fixed input positions: [10]
+Key-independent output positions: [6, 20, 21, 22, 23, 46, 52, 53, 54, 55, 60, 61, 62, 63, 70, 76, 77, 78, 79, 84, 85, 86, 87, 92, 93, 94, 95, 118, 124, 125, 126, 127]
+Number of key-independent bits: 32
+####################################################################################################
+Fixed input positions: [11]
+Key-independent output positions: [20, 21, 22, 23, 46, 54, 62, 70, 76, 77, 78, 79, 84, 85, 86, 87, 94, 124, 125, 126, 127]
+Number of key-independent bits: 21
+####################################################################################################
+Fixed input positions: [12]
+Key-independent output positions: []
+Number of key-independent bits: 0
+####################################################################################################
+Fixed input positions: [13]
+Key-independent output positions: []
+Number of key-independent bits: 0
+####################################################################################################
+Fixed input positions: [14]
+Key-independent output positions: [22]
+Number of key-independent bits: 1
+####################################################################################################
+Fixed input positions: [15]
+Key-independent output positions: []
+Number of key-independent bits: 0
