@@ -329,8 +329,8 @@ def parse_args():
                                         "based on monomial prediction",
                             formatter_class=RawTextHelpFormatter)
     parser.add_argument("-nr", "--nrounds", default=21, type=int, help="number of rounds\n")
-    parser.add_argument("-sl", "--solver", default="minisat22", type=str,
-                        choices=['cadical', 'glucose3', 'glucose4', 'lingeling', 'maplechrono', 'maplecm', 'maplesat', 'minicard', 'minisat22', 'minisat-gh'],
+    parser.add_argument("-sl", "--solver", default="cadical195", type=str,
+                        choices=[solver for solver in solvers.SolverNames.__dict__.keys() if not solver.startswith('__')],
                         help="choose a SAT solver\n")
     return vars(parser.parse_args())
 
