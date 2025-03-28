@@ -44,9 +44,10 @@ class Warp:
         Warp.count += 1
         self.nrounds = nrounds
         self.cp_solver_name = cp_solver_name
-        self.supported_cp_solvers = [
-            'gecode', 'chuffed', 'cbc', 'gurobi', 'picat', 'scip', 'choco', 'or-tools']
-        assert(self.cp_solver_name in self.supported_cp_solvers)
+        self.supported_cp_solvers = [solver_name for solver_name in minizinc.default_driver.available_solvers().keys()]
+        if self.cp_solver_name not in self.supported_cp_solvers:
+            raise ValueError(f"Solver {self.cp_solver_name} is not supported. "
+                             f"Please choose from {self.supported_cp_solvers}.")
         self.cp_solver = minizinc.Solver.lookup(self.cp_solver_name)
         self.time_limit = time_limit
         self.cp_boolean_variables = []
@@ -295,9 +296,10 @@ def parse_args():
                                         "based on monomial prediction",
                             formatter_class=RawTextHelpFormatter)
     parser.add_argument("-nr", "--nrounds", default=21, type=int, help="number of rounds\n")
-    parser.add_argument("-sl", "--solver", default="chuffed", type=str,
-                        choices=['gecode', 'chuffed', 'coin-bc', 'gurobi', 'picat', 'scip', 'choco', 'or-tools'],
-                        help="choose a cp solver\n")
+    available_solvers = [solver_name for solver_name in minizinc.default_driver.available_solvers().keys()]
+    parser.add_argument("-sl", "--solver", default="cp-sat", type=str,
+                        choices=available_solvers,
+                        help="Choose a CP solver") 
     parser.add_argument("-tl", "--timelimit", default=5, type=int, help="set a time limit for the solver in seconds\n")
     return vars(parser.parse_args())
     

@@ -27,6 +27,7 @@ from typing import final
 from pysat import solvers
 from pysat import formula
 from argparse import ArgumentParser, RawTextHelpFormatter
+from rich.progress import Progress, TimeElapsedColumn, BarColumn
 # from pysat import pb
 # import datetime
 
@@ -49,38 +50,10 @@ class Warp:
         Warp.count += 1
         self.nrounds = nrounds
         self.sat_solver_name = solver_name
-        self.supported_sat_solvers = list(solvers.SolverNames.cadical153) + \
-             list(solvers.SolverNames.glucose4) + \
-                 list(solvers.SolverNames.glucose3) + \
-                     list(solvers.SolverNames.lingeling) + \
-                         list(solvers.SolverNames.maplesat) + \
-                         list(solvers.SolverNames.maplechrono) + \
-                             list(solvers.SolverNames.maplecm) + \
-                                 list(solvers.SolverNames.minicard) + \
-                                     list(solvers.SolverNames.minisat22) + \
-                                         list(solvers.SolverNames.minisatgh)
-        assert(self.sat_solver_name in self.supported_sat_solvers)
-        if self.sat_solver_name in solvers.SolverNames.cadical153:
-            self.sat_solver = solvers.Cadical()
-        elif self.sat_solver_name in solvers.SolverNames.glucose4:
-            self.sat_solver = solvers.Glucose4()
-        elif self.sat_solver_name in solvers.SolverNames.glucose3:
-            self.sat_solver = solvers.Glucose3()
-        elif self.sat_solver_name in solvers.SolverNames.lingeling:
-            self.sat_solver = solvers.Lingeling()
-        elif self.sat_solver_name in solvers.SolverNames.maplesat:
-            self.sat_solver = solvers.Maplesat()
-        elif self.sat_solver_name in solvers.SolverNames.maplechrono:
-            self.sat_solver = solvers.MapleChrono()
-        elif self.sat_solver_name in solvers.SolverNames.maplecm:
-            self.sat_solver = solvers.MapleCM()
-        elif self.sat_solver_name in solvers.SolverNames.minicard:
-            self.sat_solver = solvers.Minicard()
-        elif self.sat_solver_name in solvers.SolverNames.minisat22:
-            self.sat_solver = solvers.Minisat22()
-        elif self.sat_solver_name in solvers.SolverNames.minisatgh:
-            self.sat_solver = solvers.MinisatGH()
-
+        self.supported_sat_solvers = [solver for solver in solvers.SolverNames.__dict__.keys() if not solver.startswith('__')]
+        if self.sat_solver_name not in self.supported_sat_solvers:
+            raise ValueError(f"Unsupported SAT solver: {self.sat_solver_name}")
+        self.sat_solver = solvers.Solver(name=self.sat_solver_name)
         self.cnf_formula = formula.CNF()
         self.solver = solvers.Solver(name=self.sat_solver_name)
         self.variables_dictionary = dict()
@@ -301,28 +274,35 @@ class Warp:
         balanced_bits = []
         not_checked_bits = []
         start_time = time.time()
-        for output_bit in target_output_bits:
-            output_active_pattern = []
-            for i in range(128):
-                if i != output_bit:
-                    output_active_pattern.append(-self.variables_dictionary[output_vars[i]])
+        with Progress("[progress.description]{task.description}", 
+                  BarColumn(),  # Add a bar to visually show progress
+                  "[progress.percentage]{task.percentage:>3.0f}%", 
+                  "•", 
+                  TimeElapsedColumn()) as progress:
+            task = progress.add_task("Checking output bits...", total=len(target_output_bits))        
+            for output_bit in target_output_bits:
+                output_active_pattern = []
+                for i in range(128):
+                    if i != output_bit:
+                        output_active_pattern.append(-self.variables_dictionary[output_vars[i]])
+                    else:
+                        output_active_pattern.append(self.variables_dictionary[output_vars[i]])
+                assumptions = input_active_pattern + output_active_pattern
+                ##########################
+                ##########################
+                result = self.sat_solver.solve(assumptions=assumptions)
+                ##########################
+                ##########################
+                if result == True:
+                    # print("Output bit number {:03d} may NOT be key-independent :-(".format(output_bit))
+                    pass
+                elif result == False:
+                    balanced_bits.append(output_bit)
+                    # print("Output bit number {:03d} is key-independent ;-)".format(output_bit))
                 else:
-                    output_active_pattern.append(self.variables_dictionary[output_vars[i]])
-            assumptions = input_active_pattern + output_active_pattern
-            ##########################
-            ##########################
-            result = self.sat_solver.solve(assumptions=assumptions)
-            ##########################
-            ##########################
-            if result == True:
-                # print("Output bit number {:03d} may NOT be key-independent :-(".format(output_bit))
-                pass
-            elif result == False:
-                balanced_bits.append(output_bit)
-                # print("Output bit number {:03d} is key-independent ;-)".format(output_bit))
-            else:
-                not_checked_bits.append(output_bit)
-                # print("Output bit number {:03d} was not checked!".format(output_bit))
+                    not_checked_bits.append(output_bit)
+                    # print("Output bit number {:03d} was not checked!".format(output_bit))
+                progress.update(task, advance=1, elapsed_time=f"{time.time() - start_time:0.02f}s")
         elapsed_time = time.time() - start_time
         number_of_balanced_bits = len(balanced_bits)
         print(f"Number of key-independent bits: {number_of_balanced_bits}")
@@ -360,7 +340,7 @@ if __name__ == '__main__':
     warp = Warp(nrounds=nrounds,
                 solver_name=solver)
     with open(warp.result_file_name, "w") as outputfile:
-        outputfile.write(f"Results of applying monomial prediction method on {warp.nrounds} rounds of WARP\n")
+        outputfile.write(f"Results of applying monomial prediction method to {warp.nrounds} rounds of WARP\n")
     mp_dict = dict()
     warp.generate_sat_model()
     if not os.path.exists("mpdict.pyobj"):
