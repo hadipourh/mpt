@@ -7,7 +7,8 @@ This repository includes the source code of tools we used in our paper entitled 
 ---
 
 ## Table of Contents
-- [Integral Analysis Based on Monomial Prediction](#integral-analysis-based-on-monomial-prediction)  
+- [Integral Analysis Based on Monomial Prediction](#integral-analysis-based-on-monomial-prediction)
+  - [Table of Contents](#table-of-contents)
   - [Distinguisher](#distinguisher)
     - [Dependencies](#dependencies)
     - [SAT](#sat)
@@ -19,6 +20,7 @@ This repository includes the source code of tools we used in our paper entitled 
     - [Key-Recovery Plots](#key-recovery-plots)
     - [Limitations](#limitations)
   - [Paper](#paper)
+  - [Contact](#contact)
   - [License](#license)
 
 ---
@@ -159,6 +161,9 @@ If you use our codes in a project resulting in an academic publication, please a
          pages={92--112}
 }
 ```
+
+## Contact
+For any questions regarding the paper or the code, please contact Hosein Hadipour at <hsn.hadipour@gmail.com>. 
 
 ---
 
