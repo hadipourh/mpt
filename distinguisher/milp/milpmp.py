@@ -261,7 +261,7 @@ class Warp:
         """
 
         key_vars = [v for v in self.milp_variables if "k" in v]
-        constraint = " + ".join(key_vars) + " >= 100\n"
+        constraint = " + ".join(key_vars) + " >= 1\n"
         return constraint
     
     def limit_the_output_choice_vector(self):
